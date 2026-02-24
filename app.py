@@ -8,7 +8,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 # 配置参数
 # =========================================================
 CONFIG = {
-    'FIXED_UUID':        '907e9841-7abb-4013-91a4-3894d9e41928',
+    'FIXED_UUID':        '807e9841-7abb-4013-91a4-3894d9e41928',
     'ARGO_TOKEN':        'eyJhIjoiY2YxMDY1YTFhZDk1YjIxNzUxNGY3MzRjNzgyYzlkMDkiLCJ0IjoiYmNiNGYxMjUtM2E3Ni00MjVlLWJiODctMDNkOGQwMmIxOGE2IiwicyI6Ik4ySTJNR0V3WTJRdE9XTTNZUzAwTmpkbExUZzVNREV0WVdVME0yVmtZbU5rTURRNSJ9',
     'ARGO_DOMAIN_FIXED': 'wasmer.cnm.ccwu.cc',
     'ARGO_PORT':         33306,
