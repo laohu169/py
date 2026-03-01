@@ -129,7 +129,7 @@
               "id": "delay-1-output-1",
               "position": "right",
               "x": 196,
-              "y": 50.6875,
+              "y": 50,
               "width": 16,
               "height": 16
             }
@@ -139,7 +139,7 @@
               "id": "delay-1-input-1",
               "position": "left",
               "x": -20,
-              "y": 50.6875,
+              "y": 50,
               "width": 16,
               "height": 16
             }
@@ -156,8 +156,8 @@
         "initialized": true
       },
       {
-        "id": "click-1",
-        "label": "event-click",
+        "id": "js-shutdown",
+        "label": "javascript-code",
         "type": "BlockBasic",
         "position": { "x": 800, "y": 120 },
         "computedPosition": { "x": 800, "y": 120, "z": 0 },
@@ -165,7 +165,7 @@
         "handleBounds": {
           "source": [
             {
-              "id": "click-1-output-1",
+              "id": "js-shutdown-output-1",
               "position": "right",
               "x": 196,
               "y": 28,
@@ -175,7 +175,7 @@
           ],
           "target": [
             {
-              "id": "click-1-input-1",
+              "id": "js-shutdown-input-1",
               "position": "left",
               "x": -20,
               "y": 28,
@@ -186,13 +186,13 @@
         },
         "data": {
           "disableBlock": false,
-          "description": "",
-          "findBy": "cssSelector",
-          "waitForSelector": true,
-          "waitSelectorTimeout": 5000,
-          "selector": "button[class*='bg-info']",
-          "markEl": false,
-          "multiple": false
+          "description": "点击红色关机按钮",
+          "timeout": 15000,
+          "context": "website",
+          "code": "(async () => {\n  // 红色关机按钮：focus-visible:outline-error\n  const btn = document.querySelector(\"button[class*='outline-error']\");\n  if (btn) {\n    btn.click();\n    automaNextBlock({ success: true });\n  } else {\n    automaNextBlock({ $error: true, message: 'Shutdown button not found' });\n  }\n})().catch((e) => {\n  automaNextBlock({ $error: true, message: e.message });\n});",
+          "preloadScripts": [],
+          "everyNewTab": false,
+          "runBeforeLoad": false
         },
         "events": {},
         "selected": false,
@@ -201,7 +201,7 @@
         "initialized": true
       },
       {
-        "id": "js-1",
+        "id": "js-waitstart",
         "label": "javascript-code",
         "type": "BlockBasic",
         "position": { "x": 1040, "y": 120 },
@@ -210,7 +210,7 @@
         "handleBounds": {
           "source": [
             {
-              "id": "js-1-output-1",
+              "id": "js-waitstart-output-1",
               "position": "right",
               "x": 196,
               "y": 28,
@@ -220,7 +220,7 @@
           ],
           "target": [
             {
-              "id": "js-1-input-1",
+              "id": "js-waitstart-input-1",
               "position": "left",
               "x": -20,
               "y": 28,
@@ -231,7 +231,52 @@
         },
         "data": {
           "disableBlock": false,
-          "description": "",
+          "description": "等待服务器完全停止后点击Start",
+          "timeout": 120000,
+          "context": "website",
+          "code": "(async () => {\n  const deadline = Date.now() + 120000; // 最多等2分钟\n  while (Date.now() < deadline) {\n    const startBtn = [...document.querySelectorAll('button[data-slot=\"base\"]')]\n      .find(b => b.textContent.trim().includes('Start'));\n    if (startBtn) {\n      startBtn.click();\n      automaNextBlock({ success: true });\n      return;\n    }\n    await new Promise(r => setTimeout(r, 3000));\n  }\n  automaNextBlock({ $error: true, message: 'Server did not go offline within 2 minutes' });\n})().catch((e) => {\n  automaNextBlock({ $error: true, message: e.message });\n});",
+          "preloadScripts": [],
+          "everyNewTab": false,
+          "runBeforeLoad": false
+        },
+        "events": {},
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": true
+      },
+      {
+        "id": "js-verify",
+        "label": "javascript-code",
+        "type": "BlockBasic",
+        "position": { "x": 1280, "y": 120 },
+        "computedPosition": { "x": 1280, "y": 120, "z": 0 },
+        "dimensions": { "width": 192, "height": 72 },
+        "handleBounds": {
+          "source": [
+            {
+              "id": "js-verify-output-1",
+              "position": "right",
+              "x": 196,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "target": [
+            {
+              "id": "js-verify-input-1",
+              "position": "left",
+              "x": -20,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ]
+        },
+        "data": {
+          "disableBlock": false,
+          "description": "验证计时器是否重置到3h59m",
           "timeout": 90000,
           "context": "website",
           "code": "(async () => {\n  const selector = \"[class*='ring-warning']\";\n  const threshold = \"3h 59m\";\n  const deadline = Date.now() + 60000;\n  let text = \"\";\n\n  while (Date.now() < deadline) {\n    const el = document.querySelector(selector);\n    text = el ? el.textContent.trim() : \"\";\n    if (text.includes(threshold)) {\n      automaSetVariable('shutdownTime', text);\n      automaSetVariable('restartSuccess', true);\n      automaNextBlock({ success: true, shutdownTime: text });\n      return;\n    }\n    await new Promise((resolve) => setTimeout(resolve, 10000));\n  }\n\n  automaSetVariable('shutdownTime', text || 'no_time');\n  automaSetVariable('restartSuccess', false);\n  automaNextBlock({ success: false, shutdownTime: text });\n})().catch((error) => {\n  automaNextBlock({ $error: true, message: error.message });\n});",
@@ -249,8 +294,8 @@
         "id": "close-1",
         "label": "close-tab",
         "type": "BlockBasic",
-        "position": { "x": 1280, "y": 120 },
-        "computedPosition": { "x": 1280, "y": 120, "z": 0 },
+        "position": { "x": 1520, "y": 120 },
+        "computedPosition": { "x": 1520, "y": 120, "z": 0 },
         "dimensions": { "width": 192, "height": 72 },
         "handleBounds": {
           "source": [
@@ -291,7 +336,7 @@
     ],
     "edges": [
       {
-        "id": "vueflow__edge-trigger-1-output-1-newtab-1-input-1",
+        "id": "edge-trigger-newtab",
         "source": "trigger-1",
         "target": "newtab-1",
         "sourceHandle": "trigger-1-output-1",
@@ -304,7 +349,7 @@
         "events": {}
       },
       {
-        "id": "vueflow__edge-newtab-1-output-1-delay-1-input-1",
+        "id": "edge-newtab-delay",
         "source": "newtab-1",
         "target": "delay-1",
         "sourceHandle": "newtab-1-output-1",
@@ -317,11 +362,11 @@
         "events": {}
       },
       {
-        "id": "vueflow__edge-delay-1-output-1-click-1-input-1",
+        "id": "edge-delay-jsshutdown",
         "source": "delay-1",
-        "target": "click-1",
+        "target": "js-shutdown",
         "sourceHandle": "delay-1-output-1",
-        "targetHandle": "click-1-input-1",
+        "targetHandle": "js-shutdown-input-1",
         "type": "custom",
         "updatable": true,
         "selectable": true,
@@ -330,11 +375,11 @@
         "events": {}
       },
       {
-        "id": "vueflow__edge-click-1-output-1-js-1-input-1",
-        "source": "click-1",
-        "target": "js-1",
-        "sourceHandle": "click-1-output-1",
-        "targetHandle": "js-1-input-1",
+        "id": "edge-jsshutdown-jswaitstart",
+        "source": "js-shutdown",
+        "target": "js-waitstart",
+        "sourceHandle": "js-shutdown-output-1",
+        "targetHandle": "js-waitstart-input-1",
         "type": "custom",
         "updatable": true,
         "selectable": true,
@@ -343,10 +388,23 @@
         "events": {}
       },
       {
-        "id": "vueflow__edge-js-1-output-1-close-1-input-1",
-        "source": "js-1",
+        "id": "edge-jswaitstart-jsverify",
+        "source": "js-waitstart",
+        "target": "js-verify",
+        "sourceHandle": "js-waitstart-output-1",
+        "targetHandle": "js-verify-input-1",
+        "type": "custom",
+        "updatable": true,
+        "selectable": true,
+        "markerEnd": "arrowclosed",
+        "data": {},
+        "events": {}
+      },
+      {
+        "id": "edge-jsverify-close",
+        "source": "js-verify",
         "target": "close-1",
-        "sourceHandle": "js-1-output-1",
+        "sourceHandle": "js-verify-output-1",
         "targetHandle": "close-1-input-1",
         "type": "custom",
         "updatable": true,
@@ -377,5 +435,5 @@
     "defaultColumnName": "column"
   },
   "globalData": "{\n\t\"key\": \"value\"\n}",
-  "description": "Restart Minestrator server and verify timer reset"
+  "description": "Shutdown Minestrator server, wait for Offline, click Start, then verify timer reset"
 }
