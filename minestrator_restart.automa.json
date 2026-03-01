@@ -1,37 +1,189 @@
 {
-  "extVersion": "1.30.00",
-  "name": "Minestrator restart",
-  "icon": "riRefreshLine",
+  "extVersion": "1.30.01",
+  "name": "minestrator_restart",
+  "icon": "riRestartLine",
   "table": [],
-  "version": "1.30.00",
+  "version": "1.29.12",
   "drawflow": {
+    "edges": [
+      {
+        "data": {},
+        "id": "e1",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n1trigger",
+        "sourceHandle": "n1trigger-output-1",
+        "target": "n2newtab",
+        "targetHandle": "n2newtab-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e2",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n2newtab",
+        "sourceHandle": "n2newtab-output-1",
+        "target": "n3delay1",
+        "targetHandle": "n3delay1-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e3",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n3delay1",
+        "sourceHandle": "n3delay1-output-1",
+        "target": "n4click",
+        "targetHandle": "n4click-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e4",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n4click",
+        "sourceHandle": "n4click-output-1",
+        "target": "n5delay2",
+        "targetHandle": "n5delay2-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e5",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n5delay2",
+        "sourceHandle": "n5delay2-output-1",
+        "target": "n6gettext",
+        "targetHandle": "n6gettext-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e6",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n6gettext",
+        "sourceHandle": "n6gettext-output-1",
+        "target": "n7cond",
+        "targetHandle": "n7cond-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e7a",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n7cond",
+        "sourceHandle": "n7cond-output-kvU-e_yxMy-FEnH03zRdf",
+        "target": "n8success",
+        "targetHandle": "n8success-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e7b",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n7cond",
+        "sourceHandle": "n7cond-output-fallback",
+        "target": "n9retrycond",
+        "targetHandle": "n9retrycond-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e8",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n8success",
+        "sourceHandle": "n8success-output-1",
+        "target": "n10close",
+        "targetHandle": "n10close-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e9a",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n9retrycond",
+        "sourceHandle": "n9retrycond-output-kvU-e_yxMy-FEnH03zRdf",
+        "target": "n11jsretry",
+        "targetHandle": "n11jsretry-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e9b",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n9retrycond",
+        "sourceHandle": "n9retrycond-output-fallback",
+        "target": "n12fail",
+        "targetHandle": "n12fail-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e10",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n11jsretry",
+        "sourceHandle": "n11jsretry-output-1",
+        "target": "n13delay3",
+        "targetHandle": "n13delay3-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e11",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n13delay3",
+        "sourceHandle": "n13delay3-output-1",
+        "target": "n6gettext",
+        "targetHandle": "n6gettext-input-1",
+        "type": "custom",
+        "updatable": true
+      }
+    ],
     "nodes": [
       {
-        "id": "trigger-1",
-        "label": "trigger",
-        "type": "BlockBasic",
-        "position": { "x": 80, "y": 120 },
-        "computedPosition": { "x": 80, "y": 120, "z": 0 },
-        "dimensions": { "width": 192, "height": 72 },
-        "handleBounds": {
-          "source": [
-            {
-              "id": "trigger-1-output-1",
-              "position": "right",
-              "x": 196,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ]
-        },
         "data": {
           "disableBlock": false,
-          "description": "",
+          "description": "每3小时触发",
           "type": "interval",
           "interval": 180,
           "delay": 0,
-          "fixedDelay": false,
           "date": "",
           "time": "00:00",
           "url": "",
@@ -63,489 +215,326 @@
             }
           }
         },
-        "events": {},
-        "selected": false,
-        "dragging": false,
-        "resizing": false,
-        "initialized": true
+        "id": "n1trigger",
+        "initialized": false,
+        "label": "trigger",
+        "position": {
+          "x": 100,
+          "y": 300
+        },
+        "type": "BlockBasic"
       },
       {
-        "id": "newtab-1",
-        "label": "new-tab",
-        "type": "BlockBasic",
-        "position": { "x": 320, "y": 120 },
-        "computedPosition": { "x": 320, "y": 120, "z": 0 },
-        "dimensions": { "width": 192, "height": 72 },
-        "handleBounds": {
-          "source": [
-            {
-              "id": "newtab-1-output-1",
-              "position": "right",
-              "x": 196,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ],
-          "target": [
-            {
-              "id": "newtab-1-input-1",
-              "position": "left",
-              "x": -20,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ]
-        },
         "data": {
           "disableBlock": false,
-          "description": "打开服务器页面",
+          "description": "打开Minestrator控制面板",
           "url": "https://minestrator.com/my/server/421293",
-          "userAgent": "",
           "active": true,
-          "tabZoom": 1,
           "inGroup": false,
-          "waitTabLoaded": true,
-          "updatePrevTab": false,
-          "customUserAgent": false
+          "customUserAgent": ""
         },
-        "events": {},
-        "selected": false,
-        "dragging": false,
-        "resizing": false,
-        "initialized": true
-      },
-      {
-        "id": "delay-1",
-        "label": "delay",
-        "type": "BlockDelay",
-        "position": { "x": 560, "y": 120 },
-        "computedPosition": { "x": 560, "y": 120, "z": 0 },
-        "dimensions": { "width": 192, "height": 117 },
-        "handleBounds": {
-          "source": [
-            {
-              "id": "delay-1-output-1",
-              "position": "right",
-              "x": 196,
-              "y": 50,
-              "width": 16,
-              "height": 16
-            }
-          ],
-          "target": [
-            {
-              "id": "delay-1-input-1",
-              "position": "left",
-              "x": -20,
-              "y": 50,
-              "width": 16,
-              "height": 16
-            }
-          ]
-        },
-        "data": {
-          "disableBlock": false,
-          "time": "5000"
-        },
-        "events": {},
-        "selected": false,
-        "dragging": false,
-        "resizing": false,
-        "initialized": true
-      },
-      {
-        "id": "js-shutdown",
-        "label": "javascript-code",
-        "type": "BlockBasic",
-        "position": { "x": 800, "y": 120 },
-        "computedPosition": { "x": 800, "y": 120, "z": 0 },
-        "dimensions": { "width": 192, "height": 72 },
-        "handleBounds": {
-          "source": [
-            {
-              "id": "js-shutdown-output-1",
-              "position": "right",
-              "x": 196,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ],
-          "target": [
-            {
-              "id": "js-shutdown-input-1",
-              "position": "left",
-              "x": -20,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ]
-        },
-        "data": {
-          "disableBlock": false,
-          "description": "点击红色关机按钮",
-          "timeout": 15000,
-          "context": "website",
-          "code": "(async () => {\n  const btn = document.querySelector(\"button[class*='outline-error']\");\n  if (btn) {\n    btn.click();\n    automaNextBlock({ success: true });\n  } else {\n    automaNextBlock({ $error: true, message: 'Shutdown button not found' });\n  }\n})().catch((e) => {\n  automaNextBlock({ $error: true, message: e.message });\n});",
-          "preloadScripts": [],
-          "everyNewTab": false,
-          "runBeforeLoad": false
-        },
-        "events": {},
-        "selected": false,
-        "dragging": false,
-        "resizing": false,
-        "initialized": true
-      },
-      {
-        "id": "delay-2",
-        "label": "delay",
-        "type": "BlockDelay",
-        "position": { "x": 1040, "y": 120 },
-        "computedPosition": { "x": 1040, "y": 120, "z": 0 },
-        "dimensions": { "width": 192, "height": 117 },
-        "handleBounds": {
-          "source": [
-            {
-              "id": "delay-2-output-1",
-              "position": "right",
-              "x": 196,
-              "y": 50,
-              "width": 16,
-              "height": 16
-            }
-          ],
-          "target": [
-            {
-              "id": "delay-2-input-1",
-              "position": "left",
-              "x": -20,
-              "y": 50,
-              "width": 16,
-              "height": 16
-            }
-          ]
-        },
-        "data": {
-          "disableBlock": false,
-          "time": "5000"
-        },
-        "events": {},
-        "selected": false,
-        "dragging": false,
-        "resizing": false,
-        "initialized": true
-      },
-      {
-        "id": "newtab-2",
+        "id": "n2newtab",
+        "initialized": false,
         "label": "new-tab",
-        "type": "BlockBasic",
-        "position": { "x": 1280, "y": 120 },
-        "computedPosition": { "x": 1280, "y": 120, "z": 0 },
-        "dimensions": { "width": 192, "height": 72 },
-        "handleBounds": {
-          "source": [
-            {
-              "id": "newtab-2-output-1",
-              "position": "right",
-              "x": 196,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ],
-          "target": [
-            {
-              "id": "newtab-2-input-1",
-              "position": "left",
-              "x": -20,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ]
+        "position": {
+          "x": 350,
+          "y": 300
         },
-        "data": {
-          "disableBlock": false,
-          "description": "关机后重新打开页面等待Offline",
-          "url": "https://minestrator.com/my/server/xxxxxx",
-          "userAgent": "",
-          "active": true,
-          "tabZoom": 1,
-          "inGroup": false,
-          "waitTabLoaded": true,
-          "updatePrevTab": false,
-          "customUserAgent": false
-        },
-        "events": {},
-        "selected": false,
-        "dragging": false,
-        "resizing": false,
-        "initialized": true
+        "type": "BlockBasic"
       },
       {
-        "id": "js-waitstart",
+        "data": {
+          "disableBlock": false,
+          "time": "5000"
+        },
+        "id": "n3delay1",
+        "initialized": false,
+        "label": "delay",
+        "position": {
+          "x": 600,
+          "y": 300
+        },
+        "type": "BlockDelay"
+      },
+      {
+        "data": {
+          "disableBlock": false,
+          "description": "点击重启按钮",
+          "findBy": "cssSelector",
+          "selector": "button[class*='bg-info']",
+          "markEl": false,
+          "multiple": false,
+          "waitForSelector": true,
+          "waitSelectorTimeout": 8000
+        },
+        "id": "n4click",
+        "initialized": false,
+        "label": "event-click",
+        "position": {
+          "x": 850,
+          "y": 300
+        },
+        "type": "BlockBasic"
+      },
+      {
+        "data": {
+          "disableBlock": false,
+          "time": "10000"
+        },
+        "id": "n5delay2",
+        "initialized": false,
+        "label": "delay",
+        "position": {
+          "x": 1100,
+          "y": 300
+        },
+        "type": "BlockDelay"
+      },
+      {
+        "data": {
+          "disableBlock": false,
+          "description": "读取倒计时文本",
+          "findBy": "cssSelector",
+          "selector": "[class*='ring-warning']",
+          "waitForSelector": true,
+          "waitSelectorTimeout": 5000,
+          "assignVariable": true,
+          "variableName": "shutdownTime",
+          "regex": "",
+          "regexExp": "",
+          "regexGroup": "",
+          "saveData": false,
+          "dataColumn": ""
+        },
+        "id": "n6gettext",
+        "initialized": false,
+        "label": "get-text",
+        "position": {
+          "x": 1350,
+          "y": 300
+        },
+        "type": "BlockBasic"
+      },
+      {
+        "data": {
+          "conditions": [
+            {
+              "conditions": [
+                {
+                  "conditions": [
+                    {
+                      "id": "cond1id",
+                      "items": [
+                        {
+                          "category": "value",
+                          "data": {
+                            "value": "{{variables.shutdownTime}}"
+                          },
+                          "id": "item1",
+                          "type": "value"
+                        },
+                        {
+                          "category": "compare",
+                          "id": "item2",
+                          "type": "contains"
+                        },
+                        {
+                          "category": "value",
+                          "data": {
+                            "value": "3h 59m"
+                          },
+                          "id": "item3",
+                          "type": "value"
+                        }
+                      ]
+                    }
+                  ],
+                  "id": "path1id"
+                }
+              ],
+              "id": "kvU-e_yxMy-FEnH03zRdf",
+              "name": "Path 1"
+            }
+          ],
+          "description": "是否包含3h 59m",
+          "disableBlock": false,
+          "retryConditions": false,
+          "retryCount": 10,
+          "retryTimeout": 1000
+        },
+        "id": "n7cond",
+        "initialized": false,
+        "label": "conditions",
+        "position": {
+          "x": 1600,
+          "y": 300
+        },
+        "type": "BlockConditions"
+      },
+      {
+        "data": {
+          "disableBlock": false,
+          "description": "✅成功：发Telegram通知",
+          "code": "const chatId = '7934817318';\nconst token = '8573800274:AAE8OQ7rX40XiG4CZFBTrNiRcgLhlfEPhUU';\nconst text = encodeURIComponent('✅ Minestrator 重启成功！倒计时已重置：' + variables.shutdownTime);\nawait fetch('https://api.telegram.org/bot' + token + '/sendMessage?chat_id=' + chatId + '&text=' + text);\nreturn { success: true };",
+          "evCode": ""
+        },
+        "id": "n8success",
+        "initialized": false,
         "label": "javascript-code",
-        "type": "BlockBasic",
-        "position": { "x": 1520, "y": 120 },
-        "computedPosition": { "x": 1520, "y": 120, "z": 0 },
-        "dimensions": { "width": 192, "height": 72 },
-        "handleBounds": {
-          "source": [
-            {
-              "id": "js-waitstart-output-1",
-              "position": "right",
-              "x": 196,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ],
-          "target": [
-            {
-              "id": "js-waitstart-input-1",
-              "position": "left",
-              "x": -20,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ]
+        "position": {
+          "x": 1850,
+          "y": 100
         },
-        "data": {
-          "disableBlock": false,
-          "description": "等待服务器Offline后点击Start",
-          "timeout": 120000,
-          "context": "website",
-          "code": "(async () => {\n  const deadline = Date.now() + 120000; // 最多等2分钟\n  while (Date.now() < deadline) {\n    const startBtn = [...document.querySelectorAll('button[data-slot=\"base\"]')]\n      .find(b => b.textContent.trim().includes('Start'));\n    if (startBtn) {\n      startBtn.click();\n      automaNextBlock({ success: true });\n      return;\n    }\n    await new Promise(r => setTimeout(r, 3000));\n  }\n  automaNextBlock({ $error: true, message: 'Server did not go offline within 2 minutes' });\n})().catch((e) => {\n  automaNextBlock({ $error: true, message: e.message });\n});",
-          "preloadScripts": [],
-          "everyNewTab": false,
-          "runBeforeLoad": false
-        },
-        "events": {},
-        "selected": false,
-        "dragging": false,
-        "resizing": false,
-        "initialized": true
+        "type": "BlockBasic"
       },
       {
-        "id": "js-verify",
-        "label": "javascript-code",
-        "type": "BlockBasic",
-        "position": { "x": 1760, "y": 120 },
-        "computedPosition": { "x": 1760, "y": 120, "z": 0 },
-        "dimensions": { "width": 192, "height": 72 },
-        "handleBounds": {
-          "source": [
-            {
-              "id": "js-verify-output-1",
-              "position": "right",
-              "x": 196,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ],
-          "target": [
-            {
-              "id": "js-verify-input-1",
-              "position": "left",
-              "x": -20,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ]
-        },
         "data": {
-          "disableBlock": false,
-          "description": "验证计时器是否重置到3h59m",
-          "timeout": 90000,
-          "context": "website",
-          "code": "(async () => {\n  const selector = \"[class*='ring-warning']\";\n  const threshold = \"3h 59m\";\n  const deadline = Date.now() + 60000;\n  let text = \"\";\n\n  while (Date.now() < deadline) {\n    const el = document.querySelector(selector);\n    text = el ? el.textContent.trim() : \"\";\n    if (text.includes(threshold)) {\n      automaSetVariable('shutdownTime', text);\n      automaSetVariable('restartSuccess', true);\n      automaNextBlock({ success: true, shutdownTime: text });\n      return;\n    }\n    await new Promise((resolve) => setTimeout(resolve, 10000));\n  }\n\n  automaSetVariable('shutdownTime', text || 'no_time');\n  automaSetVariable('restartSuccess', false);\n  automaNextBlock({ success: false, shutdownTime: text });\n})().catch((error) => {\n  automaNextBlock({ $error: true, message: error.message });\n});",
-          "preloadScripts": [],
-          "everyNewTab": false,
-          "runBeforeLoad": false
-        },
-        "events": {},
-        "selected": false,
-        "dragging": false,
-        "resizing": false,
-        "initialized": true
-      },
-      {
-        "id": "close-1",
-        "label": "close-tab",
-        "type": "BlockBasic",
-        "position": { "x": 2000, "y": 120 },
-        "computedPosition": { "x": 2000, "y": 120, "z": 0 },
-        "dimensions": { "width": 192, "height": 72 },
-        "handleBounds": {
-          "source": [
-            {
-              "id": "close-1-output-1",
-              "position": "right",
-              "x": 196,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ],
-          "target": [
-            {
-              "id": "close-1-input-1",
-              "position": "left",
-              "x": -20,
-              "y": 28,
-              "width": 16,
-              "height": 16
-            }
-          ]
-        },
-        "data": {
-          "disableBlock": false,
-          "url": "",
-          "description": "",
           "activeTab": true,
+          "allWindows": false,
           "closeType": "tab",
-          "allWindows": false
+          "description": "成功后关闭标签页",
+          "disableBlock": false,
+          "url": ""
         },
-        "events": {},
-        "selected": false,
-        "dragging": false,
-        "resizing": false,
-        "initialized": true
+        "id": "n10close",
+        "initialized": false,
+        "label": "close-tab",
+        "position": {
+          "x": 2100,
+          "y": 100
+        },
+        "type": "BlockBasic"
+      },
+      {
+        "data": {
+          "conditions": [
+            {
+              "conditions": [
+                {
+                  "conditions": [
+                    {
+                      "id": "cond2id",
+                      "items": [
+                        {
+                          "category": "value",
+                          "data": {
+                            "value": "{{variables.retryCount}}"
+                          },
+                          "id": "item4",
+                          "type": "value"
+                        },
+                        {
+                          "category": "compare",
+                          "id": "item5",
+                          "type": "lt"
+                        },
+                        {
+                          "category": "value",
+                          "data": {
+                            "value": "5"
+                          },
+                          "id": "item6",
+                          "type": "value"
+                        }
+                      ]
+                    }
+                  ],
+                  "id": "path2id"
+                }
+              ],
+              "id": "kvU-e_yxMy-FEnH03zRdf",
+              "name": "Path 1"
+            }
+          ],
+          "description": "重试次数<5",
+          "disableBlock": false,
+          "retryConditions": false,
+          "retryCount": 10,
+          "retryTimeout": 1000
+        },
+        "id": "n9retrycond",
+        "initialized": false,
+        "label": "conditions",
+        "position": {
+          "x": 1850,
+          "y": 450
+        },
+        "type": "BlockConditions"
+      },
+      {
+        "data": {
+          "disableBlock": false,
+          "description": "计数+1",
+          "code": "const current = parseInt(variables.retryCount || '0');\nreturn { variables: { retryCount: String(current + 1) } };",
+          "evCode": ""
+        },
+        "id": "n11jsretry",
+        "initialized": false,
+        "label": "javascript-code",
+        "position": {
+          "x": 2100,
+          "y": 400
+        },
+        "type": "BlockBasic"
+      },
+      {
+        "data": {
+          "disableBlock": false,
+          "time": "10000"
+        },
+        "id": "n13delay3",
+        "initialized": false,
+        "label": "delay",
+        "position": {
+          "x": 2350,
+          "y": 400
+        },
+        "type": "BlockDelay"
+      },
+      {
+        "data": {
+          "disableBlock": false,
+          "description": "❌失败：发Telegram通知",
+          "code": "const chatId = '5878981847';\nconst token = 'YOUR_BOT_TOKEN_HERE';\nconst text = encodeURIComponent('❌ Minestrator 重启失败！60秒内时间未重置，当前：' + (variables.shutdownTime || '未读取到'));\nawait fetch('https://api.telegram.org/bot' + token + '/sendMessage?chat_id=' + chatId + '&text=' + text);\nreturn { success: false };",
+          "evCode": ""
+        },
+        "id": "n12fail",
+        "initialized": false,
+        "label": "javascript-code",
+        "position": {
+          "x": 2100,
+          "y": 600
+        },
+        "type": "BlockBasic"
       }
     ],
-    "edges": [
-      {
-        "id": "edge-trigger-newtab1",
-        "source": "trigger-1",
-        "target": "newtab-1",
-        "sourceHandle": "trigger-1-output-1",
-        "targetHandle": "newtab-1-input-1",
-        "type": "custom",
-        "updatable": true,
-        "selectable": true,
-        "markerEnd": "arrowclosed",
-        "data": {},
-        "events": {}
-      },
-      {
-        "id": "edge-newtab1-delay1",
-        "source": "newtab-1",
-        "target": "delay-1",
-        "sourceHandle": "newtab-1-output-1",
-        "targetHandle": "delay-1-input-1",
-        "type": "custom",
-        "updatable": true,
-        "selectable": true,
-        "markerEnd": "arrowclosed",
-        "data": {},
-        "events": {}
-      },
-      {
-        "id": "edge-delay1-jsshutdown",
-        "source": "delay-1",
-        "target": "js-shutdown",
-        "sourceHandle": "delay-1-output-1",
-        "targetHandle": "js-shutdown-input-1",
-        "type": "custom",
-        "updatable": true,
-        "selectable": true,
-        "markerEnd": "arrowclosed",
-        "data": {},
-        "events": {}
-      },
-      {
-        "id": "edge-jsshutdown-delay2",
-        "source": "js-shutdown",
-        "target": "delay-2",
-        "sourceHandle": "js-shutdown-output-1",
-        "targetHandle": "delay-2-input-1",
-        "type": "custom",
-        "updatable": true,
-        "selectable": true,
-        "markerEnd": "arrowclosed",
-        "data": {},
-        "events": {}
-      },
-      {
-        "id": "edge-delay2-newtab2",
-        "source": "delay-2",
-        "target": "newtab-2",
-        "sourceHandle": "delay-2-output-1",
-        "targetHandle": "newtab-2-input-1",
-        "type": "custom",
-        "updatable": true,
-        "selectable": true,
-        "markerEnd": "arrowclosed",
-        "data": {},
-        "events": {}
-      },
-      {
-        "id": "edge-newtab2-jswaitstart",
-        "source": "newtab-2",
-        "target": "js-waitstart",
-        "sourceHandle": "newtab-2-output-1",
-        "targetHandle": "js-waitstart-input-1",
-        "type": "custom",
-        "updatable": true,
-        "selectable": true,
-        "markerEnd": "arrowclosed",
-        "data": {},
-        "events": {}
-      },
-      {
-        "id": "edge-jswaitstart-jsverify",
-        "source": "js-waitstart",
-        "target": "js-verify",
-        "sourceHandle": "js-waitstart-output-1",
-        "targetHandle": "js-verify-input-1",
-        "type": "custom",
-        "updatable": true,
-        "selectable": true,
-        "markerEnd": "arrowclosed",
-        "data": {},
-        "events": {}
-      },
-      {
-        "id": "edge-jsverify-close",
-        "source": "js-verify",
-        "target": "close-1",
-        "sourceHandle": "js-verify-output-1",
-        "targetHandle": "close-1-input-1",
-        "type": "custom",
-        "updatable": true,
-        "selectable": true,
-        "markerEnd": "arrowclosed",
-        "data": {},
-        "events": {}
-      }
+    "position": [
+      0,
+      0
     ],
-    "x": 0,
-    "y": 0,
-    "zoom": 1
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.8
+    },
+    "zoom": 0.8
   },
   "settings": {
-    "publicId": "",
-    "aipowerToken": "",
-    "blockDelay": 0,
-    "saveLog": true,
+    "blockDelay": 300,
     "debugMode": false,
-    "restartTimes": 3,
-    "notification": false,
+    "defaultColumnName": "column",
     "execContext": "popup",
-    "reuseLastState": false,
-    "inputAutocomplete": true,
-    "onError": "stop-workflow",
     "executedBlockOnWeb": false,
+    "inputAutocomplete": true,
     "insertDefaultColumn": false,
-    "defaultColumnName": "column"
+    "notification": true,
+    "onError": "stop-workflow",
+    "publicId": "",
+    "restartTimes": 3,
+    "reuseLastState": false,
+    "saveLog": true
   },
   "globalData": "{\n\t\"key\": \"value\"\n}",
-  "description": "Shutdown Minestrator server, reload page, wait for Offline, click Start, verify timer reset"
+  "description": "点击重启按钮，每10秒检查倒计时是否重置到3h 59m，最多等待60秒。每3小时自动执行。",
+  "includedWorkflows": {}
 }
