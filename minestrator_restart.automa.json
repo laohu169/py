@@ -265,7 +265,7 @@
       {
         "data": {
           "disableBlock": false,
-          "time": "5000"
+          "time": "15000"
         },
         "id": "n3delay1",
         "initialized": false,
