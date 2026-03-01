@@ -100,13 +100,13 @@
         },
         "data": {
           "disableBlock": false,
-          "description": "",
+          "description": "打开服务器页面",
           "url": "https://minestrator.com/my/server/421293",
           "userAgent": "",
           "active": true,
           "tabZoom": 1,
           "inGroup": false,
-          "waitTabLoaded": false,
+          "waitTabLoaded": true,
           "updatePrevTab": false,
           "customUserAgent": false
         },
@@ -189,7 +189,7 @@
           "description": "点击红色关机按钮",
           "timeout": 15000,
           "context": "website",
-          "code": "(async () => {\n  // 红色关机按钮：focus-visible:outline-error\n  const btn = document.querySelector(\"button[class*='outline-error']\");\n  if (btn) {\n    btn.click();\n    automaNextBlock({ success: true });\n  } else {\n    automaNextBlock({ $error: true, message: 'Shutdown button not found' });\n  }\n})().catch((e) => {\n  automaNextBlock({ $error: true, message: e.message });\n});",
+          "code": "(async () => {\n  const btn = document.querySelector(\"button[class*='outline-error']\");\n  if (btn) {\n    btn.click();\n    automaNextBlock({ success: true });\n  } else {\n    automaNextBlock({ $error: true, message: 'Shutdown button not found' });\n  }\n})().catch((e) => {\n  automaNextBlock({ $error: true, message: e.message });\n});",
           "preloadScripts": [],
           "everyNewTab": false,
           "runBeforeLoad": false
@@ -201,11 +201,97 @@
         "initialized": true
       },
       {
+        "id": "delay-2",
+        "label": "delay",
+        "type": "BlockDelay",
+        "position": { "x": 1040, "y": 120 },
+        "computedPosition": { "x": 1040, "y": 120, "z": 0 },
+        "dimensions": { "width": 192, "height": 117 },
+        "handleBounds": {
+          "source": [
+            {
+              "id": "delay-2-output-1",
+              "position": "right",
+              "x": 196,
+              "y": 50,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "target": [
+            {
+              "id": "delay-2-input-1",
+              "position": "left",
+              "x": -20,
+              "y": 50,
+              "width": 16,
+              "height": 16
+            }
+          ]
+        },
+        "data": {
+          "disableBlock": false,
+          "time": "5000"
+        },
+        "events": {},
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": true
+      },
+      {
+        "id": "newtab-2",
+        "label": "new-tab",
+        "type": "BlockBasic",
+        "position": { "x": 1280, "y": 120 },
+        "computedPosition": { "x": 1280, "y": 120, "z": 0 },
+        "dimensions": { "width": 192, "height": 72 },
+        "handleBounds": {
+          "source": [
+            {
+              "id": "newtab-2-output-1",
+              "position": "right",
+              "x": 196,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "target": [
+            {
+              "id": "newtab-2-input-1",
+              "position": "left",
+              "x": -20,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ]
+        },
+        "data": {
+          "disableBlock": false,
+          "description": "关机后重新打开页面等待Offline",
+          "url": "https://minestrator.com/my/server/xxxxxx",
+          "userAgent": "",
+          "active": true,
+          "tabZoom": 1,
+          "inGroup": false,
+          "waitTabLoaded": true,
+          "updatePrevTab": false,
+          "customUserAgent": false
+        },
+        "events": {},
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": true
+      },
+      {
         "id": "js-waitstart",
         "label": "javascript-code",
         "type": "BlockBasic",
-        "position": { "x": 1040, "y": 120 },
-        "computedPosition": { "x": 1040, "y": 120, "z": 0 },
+        "position": { "x": 1520, "y": 120 },
+        "computedPosition": { "x": 1520, "y": 120, "z": 0 },
         "dimensions": { "width": 192, "height": 72 },
         "handleBounds": {
           "source": [
@@ -231,7 +317,7 @@
         },
         "data": {
           "disableBlock": false,
-          "description": "等待服务器完全停止后点击Start",
+          "description": "等待服务器Offline后点击Start",
           "timeout": 120000,
           "context": "website",
           "code": "(async () => {\n  const deadline = Date.now() + 120000; // 最多等2分钟\n  while (Date.now() < deadline) {\n    const startBtn = [...document.querySelectorAll('button[data-slot=\"base\"]')]\n      .find(b => b.textContent.trim().includes('Start'));\n    if (startBtn) {\n      startBtn.click();\n      automaNextBlock({ success: true });\n      return;\n    }\n    await new Promise(r => setTimeout(r, 3000));\n  }\n  automaNextBlock({ $error: true, message: 'Server did not go offline within 2 minutes' });\n})().catch((e) => {\n  automaNextBlock({ $error: true, message: e.message });\n});",
@@ -249,8 +335,8 @@
         "id": "js-verify",
         "label": "javascript-code",
         "type": "BlockBasic",
-        "position": { "x": 1280, "y": 120 },
-        "computedPosition": { "x": 1280, "y": 120, "z": 0 },
+        "position": { "x": 1760, "y": 120 },
+        "computedPosition": { "x": 1760, "y": 120, "z": 0 },
         "dimensions": { "width": 192, "height": 72 },
         "handleBounds": {
           "source": [
@@ -294,8 +380,8 @@
         "id": "close-1",
         "label": "close-tab",
         "type": "BlockBasic",
-        "position": { "x": 1520, "y": 120 },
-        "computedPosition": { "x": 1520, "y": 120, "z": 0 },
+        "position": { "x": 2000, "y": 120 },
+        "computedPosition": { "x": 2000, "y": 120, "z": 0 },
         "dimensions": { "width": 192, "height": 72 },
         "handleBounds": {
           "source": [
@@ -336,7 +422,7 @@
     ],
     "edges": [
       {
-        "id": "edge-trigger-newtab",
+        "id": "edge-trigger-newtab1",
         "source": "trigger-1",
         "target": "newtab-1",
         "sourceHandle": "trigger-1-output-1",
@@ -349,7 +435,7 @@
         "events": {}
       },
       {
-        "id": "edge-newtab-delay",
+        "id": "edge-newtab1-delay1",
         "source": "newtab-1",
         "target": "delay-1",
         "sourceHandle": "newtab-1-output-1",
@@ -362,7 +448,7 @@
         "events": {}
       },
       {
-        "id": "edge-delay-jsshutdown",
+        "id": "edge-delay1-jsshutdown",
         "source": "delay-1",
         "target": "js-shutdown",
         "sourceHandle": "delay-1-output-1",
@@ -375,10 +461,36 @@
         "events": {}
       },
       {
-        "id": "edge-jsshutdown-jswaitstart",
+        "id": "edge-jsshutdown-delay2",
         "source": "js-shutdown",
-        "target": "js-waitstart",
+        "target": "delay-2",
         "sourceHandle": "js-shutdown-output-1",
+        "targetHandle": "delay-2-input-1",
+        "type": "custom",
+        "updatable": true,
+        "selectable": true,
+        "markerEnd": "arrowclosed",
+        "data": {},
+        "events": {}
+      },
+      {
+        "id": "edge-delay2-newtab2",
+        "source": "delay-2",
+        "target": "newtab-2",
+        "sourceHandle": "delay-2-output-1",
+        "targetHandle": "newtab-2-input-1",
+        "type": "custom",
+        "updatable": true,
+        "selectable": true,
+        "markerEnd": "arrowclosed",
+        "data": {},
+        "events": {}
+      },
+      {
+        "id": "edge-newtab2-jswaitstart",
+        "source": "newtab-2",
+        "target": "js-waitstart",
+        "sourceHandle": "newtab-2-output-1",
         "targetHandle": "js-waitstart-input-1",
         "type": "custom",
         "updatable": true,
@@ -435,5 +547,5 @@
     "defaultColumnName": "column"
   },
   "globalData": "{\n\t\"key\": \"value\"\n}",
-  "description": "Shutdown Minestrator server, wait for Offline, click Start, then verify timer reset"
+  "description": "Shutdown Minestrator server, reload page, wait for Offline, click Start, verify timer reset"
 }
