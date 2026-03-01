@@ -1,0 +1,381 @@
+{
+  "extVersion": "1.30.00",
+  "name": "Minestrator restart",
+  "icon": "riRefreshLine",
+  "table": [],
+  "version": "1.30.00",
+  "drawflow": {
+    "nodes": [
+      {
+        "id": "trigger-1",
+        "label": "trigger",
+        "type": "BlockBasic",
+        "position": { "x": 80, "y": 120 },
+        "computedPosition": { "x": 80, "y": 120, "z": 0 },
+        "dimensions": { "width": 192, "height": 72 },
+        "handleBounds": {
+          "source": [
+            {
+              "id": "trigger-1-output-1",
+              "position": "right",
+              "x": 196,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ]
+        },
+        "data": {
+          "disableBlock": false,
+          "description": "",
+          "type": "interval",
+          "interval": 180,
+          "delay": 0,
+          "fixedDelay": false,
+          "date": "",
+          "time": "00:00",
+          "url": "",
+          "shortcut": "",
+          "activeInInput": false,
+          "isUrlRegex": false,
+          "days": [],
+          "contextMenuName": "",
+          "contextTypes": [],
+          "parameters": [],
+          "preferParamsInTab": false,
+          "observeElement": {
+            "selector": "",
+            "baseSelector": "",
+            "matchPattern": "",
+            "targetOptions": {
+              "subtree": false,
+              "childList": true,
+              "attributes": false,
+              "attributeFilter": [],
+              "characterData": false
+            },
+            "baseElOptions": {
+              "subtree": false,
+              "childList": true,
+              "attributes": false,
+              "attributeFilter": [],
+              "characterData": false
+            }
+          }
+        },
+        "events": {},
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": true
+      },
+      {
+        "id": "newtab-1",
+        "label": "new-tab",
+        "type": "BlockBasic",
+        "position": { "x": 320, "y": 120 },
+        "computedPosition": { "x": 320, "y": 120, "z": 0 },
+        "dimensions": { "width": 192, "height": 72 },
+        "handleBounds": {
+          "source": [
+            {
+              "id": "newtab-1-output-1",
+              "position": "right",
+              "x": 196,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "target": [
+            {
+              "id": "newtab-1-input-1",
+              "position": "left",
+              "x": -20,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ]
+        },
+        "data": {
+          "disableBlock": false,
+          "description": "",
+          "url": "https://minestrator.com/my/server/xxxxxx",
+          "userAgent": "",
+          "active": true,
+          "tabZoom": 1,
+          "inGroup": false,
+          "waitTabLoaded": false,
+          "updatePrevTab": false,
+          "customUserAgent": false
+        },
+        "events": {},
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": true
+      },
+      {
+        "id": "delay-1",
+        "label": "delay",
+        "type": "BlockDelay",
+        "position": { "x": 560, "y": 120 },
+        "computedPosition": { "x": 560, "y": 120, "z": 0 },
+        "dimensions": { "width": 192, "height": 117 },
+        "handleBounds": {
+          "source": [
+            {
+              "id": "delay-1-output-1",
+              "position": "right",
+              "x": 196,
+              "y": 50.6875,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "target": [
+            {
+              "id": "delay-1-input-1",
+              "position": "left",
+              "x": -20,
+              "y": 50.6875,
+              "width": 16,
+              "height": 16
+            }
+          ]
+        },
+        "data": {
+          "disableBlock": false,
+          "time": "5000"
+        },
+        "events": {},
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": true
+      },
+      {
+        "id": "click-1",
+        "label": "event-click",
+        "type": "BlockBasic",
+        "position": { "x": 800, "y": 120 },
+        "computedPosition": { "x": 800, "y": 120, "z": 0 },
+        "dimensions": { "width": 192, "height": 72 },
+        "handleBounds": {
+          "source": [
+            {
+              "id": "click-1-output-1",
+              "position": "right",
+              "x": 196,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "target": [
+            {
+              "id": "click-1-input-1",
+              "position": "left",
+              "x": -20,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ]
+        },
+        "data": {
+          "disableBlock": false,
+          "description": "",
+          "findBy": "cssSelector",
+          "waitForSelector": true,
+          "waitSelectorTimeout": 5000,
+          "selector": "button[class*='bg-info']",
+          "markEl": false,
+          "multiple": false
+        },
+        "events": {},
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": true
+      },
+      {
+        "id": "js-1",
+        "label": "javascript-code",
+        "type": "BlockBasic",
+        "position": { "x": 1040, "y": 120 },
+        "computedPosition": { "x": 1040, "y": 120, "z": 0 },
+        "dimensions": { "width": 192, "height": 72 },
+        "handleBounds": {
+          "source": [
+            {
+              "id": "js-1-output-1",
+              "position": "right",
+              "x": 196,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "target": [
+            {
+              "id": "js-1-input-1",
+              "position": "left",
+              "x": -20,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ]
+        },
+        "data": {
+          "disableBlock": false,
+          "description": "",
+          "timeout": 90000,
+          "context": "website",
+          "code": "(async () => {\n  const selector = \"[class*='ring-warning']\";\n  const threshold = \"3h 59m\";\n  const deadline = Date.now() + 60000;\n  let text = \"\";\n\n  while (Date.now() < deadline) {\n    const el = document.querySelector(selector);\n    text = el ? el.textContent.trim() : \"\";\n    if (text.includes(threshold)) {\n      automaSetVariable('shutdownTime', text);\n      automaSetVariable('restartSuccess', true);\n      automaNextBlock({ success: true, shutdownTime: text });\n      return;\n    }\n    await new Promise((resolve) => setTimeout(resolve, 10000));\n  }\n\n  automaSetVariable('shutdownTime', text || 'no_time');\n  automaSetVariable('restartSuccess', false);\n  automaNextBlock({ success: false, shutdownTime: text });\n})().catch((error) => {\n  automaNextBlock({ $error: true, message: error.message });\n});",
+          "preloadScripts": [],
+          "everyNewTab": false,
+          "runBeforeLoad": false
+        },
+        "events": {},
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": true
+      },
+      {
+        "id": "close-1",
+        "label": "close-tab",
+        "type": "BlockBasic",
+        "position": { "x": 1280, "y": 120 },
+        "computedPosition": { "x": 1280, "y": 120, "z": 0 },
+        "dimensions": { "width": 192, "height": 72 },
+        "handleBounds": {
+          "source": [
+            {
+              "id": "close-1-output-1",
+              "position": "right",
+              "x": 196,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "target": [
+            {
+              "id": "close-1-input-1",
+              "position": "left",
+              "x": -20,
+              "y": 28,
+              "width": 16,
+              "height": 16
+            }
+          ]
+        },
+        "data": {
+          "disableBlock": false,
+          "url": "",
+          "description": "",
+          "activeTab": true,
+          "closeType": "tab",
+          "allWindows": false
+        },
+        "events": {},
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "vueflow__edge-trigger-1-output-1-newtab-1-input-1",
+        "source": "trigger-1",
+        "target": "newtab-1",
+        "sourceHandle": "trigger-1-output-1",
+        "targetHandle": "newtab-1-input-1",
+        "type": "custom",
+        "updatable": true,
+        "selectable": true,
+        "markerEnd": "arrowclosed",
+        "data": {},
+        "events": {}
+      },
+      {
+        "id": "vueflow__edge-newtab-1-output-1-delay-1-input-1",
+        "source": "newtab-1",
+        "target": "delay-1",
+        "sourceHandle": "newtab-1-output-1",
+        "targetHandle": "delay-1-input-1",
+        "type": "custom",
+        "updatable": true,
+        "selectable": true,
+        "markerEnd": "arrowclosed",
+        "data": {},
+        "events": {}
+      },
+      {
+        "id": "vueflow__edge-delay-1-output-1-click-1-input-1",
+        "source": "delay-1",
+        "target": "click-1",
+        "sourceHandle": "delay-1-output-1",
+        "targetHandle": "click-1-input-1",
+        "type": "custom",
+        "updatable": true,
+        "selectable": true,
+        "markerEnd": "arrowclosed",
+        "data": {},
+        "events": {}
+      },
+      {
+        "id": "vueflow__edge-click-1-output-1-js-1-input-1",
+        "source": "click-1",
+        "target": "js-1",
+        "sourceHandle": "click-1-output-1",
+        "targetHandle": "js-1-input-1",
+        "type": "custom",
+        "updatable": true,
+        "selectable": true,
+        "markerEnd": "arrowclosed",
+        "data": {},
+        "events": {}
+      },
+      {
+        "id": "vueflow__edge-js-1-output-1-close-1-input-1",
+        "source": "js-1",
+        "target": "close-1",
+        "sourceHandle": "js-1-output-1",
+        "targetHandle": "close-1-input-1",
+        "type": "custom",
+        "updatable": true,
+        "selectable": true,
+        "markerEnd": "arrowclosed",
+        "data": {},
+        "events": {}
+      }
+    ],
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  },
+  "settings": {
+    "publicId": "",
+    "aipowerToken": "",
+    "blockDelay": 0,
+    "saveLog": true,
+    "debugMode": false,
+    "restartTimes": 3,
+    "notification": false,
+    "execContext": "popup",
+    "reuseLastState": false,
+    "inputAutocomplete": true,
+    "onError": "stop-workflow",
+    "executedBlockOnWeb": false,
+    "insertDefaultColumn": false,
+    "defaultColumnName": "column"
+  },
+  "globalData": "{\n\t\"key\": \"value\"\n}",
+  "description": "Restart Minestrator server and verify timer reset"
+}
