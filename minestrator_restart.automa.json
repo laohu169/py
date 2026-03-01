@@ -244,7 +244,10 @@
         "id": "n1trigger",
         "initialized": false,
         "label": "trigger",
-        "position": { "x": 100, "y": 300 },
+        "position": {
+          "x": 100,
+          "y": 300
+        },
         "type": "BlockBasic"
       },
       {
@@ -259,7 +262,10 @@
         "id": "n2newtab",
         "initialized": false,
         "label": "new-tab",
-        "position": { "x": 350, "y": 300 },
+        "position": {
+          "x": 350,
+          "y": 300
+        },
         "type": "BlockBasic"
       },
       {
@@ -270,7 +276,10 @@
         "id": "n3delay1",
         "initialized": false,
         "label": "delay",
-        "position": { "x": 600, "y": 300 },
+        "position": {
+          "x": 600,
+          "y": 300
+        },
         "type": "BlockDelay"
       },
       {
@@ -287,7 +296,10 @@
         "id": "n4click",
         "initialized": false,
         "label": "event-click",
-        "position": { "x": 850, "y": 300 },
+        "position": {
+          "x": 850,
+          "y": 300
+        },
         "type": "BlockBasic"
       },
       {
@@ -299,24 +311,30 @@
         "id": "n5delay2",
         "initialized": false,
         "label": "delay",
-        "position": { "x": 1100, "y": 300 },
+        "position": {
+          "x": 1100,
+          "y": 300
+        },
         "type": "BlockDelay"
       },
       {
         "data": {
           "disableBlock": false,
-          "description": "点击Start按钮启动服务器",
-          "findBy": "cssSelector",
-          "selector": "button[class*='outline-primary']",
-          "markEl": false,
-          "multiple": false,
-          "waitForSelector": true,
-          "waitSelectorTimeout": 10000
+          "description": "点击卡片上的Start按钮",
+          "timeout": 15000,
+          "context": "website",
+          "code": "(async () => {\n  // 找所有按钮，匹配文字包含Start但不包含server（排除Start server按钮）\n  const btn = [...document.querySelectorAll('button')]\n    .find(b => {\n      const t = b.textContent.trim();\n      return t === 'Start' || t.includes('Start') && !t.includes('server');\n    });\n  if (btn) {\n    btn.click();\n    automaNextBlock({ success: true });\n  } else {\n    automaNextBlock({ $error: true, message: 'Start button not found' });\n  }\n})().catch(e => automaNextBlock({ $error: true, message: e.message }));",
+          "preloadScripts": [],
+          "everyNewTab": false,
+          "runBeforeLoad": false
         },
         "id": "n14clickstart",
         "initialized": false,
-        "label": "event-click",
-        "position": { "x": 1350, "y": 300 },
+        "label": "javascript-code",
+        "position": {
+          "x": 1350,
+          "y": 300
+        },
         "type": "BlockBasic"
       },
       {
@@ -328,7 +346,10 @@
         "id": "n5bdelay3",
         "initialized": false,
         "label": "delay",
-        "position": { "x": 1600, "y": 300 },
+        "position": {
+          "x": 1600,
+          "y": 300
+        },
         "type": "BlockDelay"
       },
       {
@@ -350,7 +371,10 @@
         "id": "n6gettext",
         "initialized": false,
         "label": "get-text",
-        "position": { "x": 1850, "y": 300 },
+        "position": {
+          "x": 1850,
+          "y": 300
+        },
         "type": "BlockBasic"
       },
       {
@@ -365,7 +389,9 @@
                       "items": [
                         {
                           "category": "value",
-                          "data": { "value": "{{variables.shutdownTime}}" },
+                          "data": {
+                            "value": "{{variables.shutdownTime}}"
+                          },
                           "id": "item1",
                           "type": "value"
                         },
@@ -376,7 +402,9 @@
                         },
                         {
                           "category": "value",
-                          "data": { "value": "3h 59m" },
+                          "data": {
+                            "value": "3h 59m"
+                          },
                           "id": "item3",
                           "type": "value"
                         }
@@ -399,7 +427,10 @@
         "id": "n7cond",
         "initialized": false,
         "label": "conditions",
-        "position": { "x": 2100, "y": 300 },
+        "position": {
+          "x": 2100,
+          "y": 300
+        },
         "type": "BlockConditions"
       },
       {
@@ -412,7 +443,10 @@
         "id": "n8success",
         "initialized": false,
         "label": "javascript-code",
-        "position": { "x": 2350, "y": 100 },
+        "position": {
+          "x": 2350,
+          "y": 100
+        },
         "type": "BlockBasic"
       },
       {
@@ -427,7 +461,10 @@
         "id": "n10close",
         "initialized": false,
         "label": "close-tab",
-        "position": { "x": 2600, "y": 100 },
+        "position": {
+          "x": 2600,
+          "y": 100
+        },
         "type": "BlockBasic"
       },
       {
@@ -442,7 +479,9 @@
                       "items": [
                         {
                           "category": "value",
-                          "data": { "value": "{{variables.retryCount}}" },
+                          "data": {
+                            "value": "{{variables.retryCount}}"
+                          },
                           "id": "item4",
                           "type": "value"
                         },
@@ -453,7 +492,9 @@
                         },
                         {
                           "category": "value",
-                          "data": { "value": "5" },
+                          "data": {
+                            "value": "5"
+                          },
                           "id": "item6",
                           "type": "value"
                         }
@@ -476,7 +517,10 @@
         "id": "n9retrycond",
         "initialized": false,
         "label": "conditions",
-        "position": { "x": 2350, "y": 450 },
+        "position": {
+          "x": 2350,
+          "y": 450
+        },
         "type": "BlockConditions"
       },
       {
@@ -489,7 +533,10 @@
         "id": "n11jsretry",
         "initialized": false,
         "label": "javascript-code",
-        "position": { "x": 2600, "y": 400 },
+        "position": {
+          "x": 2600,
+          "y": 400
+        },
         "type": "BlockBasic"
       },
       {
@@ -500,7 +547,10 @@
         "id": "n13delay3",
         "initialized": false,
         "label": "delay",
-        "position": { "x": 2850, "y": 400 },
+        "position": {
+          "x": 2850,
+          "y": 400
+        },
         "type": "BlockDelay"
       },
       {
@@ -513,12 +563,22 @@
         "id": "n12fail",
         "initialized": false,
         "label": "javascript-code",
-        "position": { "x": 2600, "y": 600 },
+        "position": {
+          "x": 2600,
+          "y": 600
+        },
         "type": "BlockBasic"
       }
     ],
-    "position": [0, 0],
-    "viewport": { "x": 0, "y": 0, "zoom": 0.8 },
+    "position": [
+      0,
+      0
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.8
+    },
     "zoom": 0.8
   },
   "settings": {
