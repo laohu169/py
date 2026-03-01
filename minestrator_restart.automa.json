@@ -66,6 +66,32 @@
         "selectable": true,
         "source": "n5delay2",
         "sourceHandle": "n5delay2-output-1",
+        "target": "n14clickstart",
+        "targetHandle": "n14clickstart-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e5b",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n14clickstart",
+        "sourceHandle": "n14clickstart-output-1",
+        "target": "n5bdelay3",
+        "targetHandle": "n5bdelay3-input-1",
+        "type": "custom",
+        "updatable": true
+      },
+      {
+        "data": {},
+        "id": "e5c",
+        "label": "",
+        "markerEnd": "arrowclosed",
+        "selectable": true,
+        "source": "n5bdelay3",
+        "sourceHandle": "n5bdelay3-output-1",
         "target": "n6gettext",
         "targetHandle": "n6gettext-input-1",
         "type": "custom",
@@ -218,10 +244,7 @@
         "id": "n1trigger",
         "initialized": false,
         "label": "trigger",
-        "position": {
-          "x": 100,
-          "y": 300
-        },
+        "position": { "x": 100, "y": 300 },
         "type": "BlockBasic"
       },
       {
@@ -236,10 +259,7 @@
         "id": "n2newtab",
         "initialized": false,
         "label": "new-tab",
-        "position": {
-          "x": 350,
-          "y": 300
-        },
+        "position": { "x": 350, "y": 300 },
         "type": "BlockBasic"
       },
       {
@@ -250,18 +270,15 @@
         "id": "n3delay1",
         "initialized": false,
         "label": "delay",
-        "position": {
-          "x": 600,
-          "y": 300
-        },
+        "position": { "x": 600, "y": 300 },
         "type": "BlockDelay"
       },
       {
         "data": {
           "disableBlock": false,
-          "description": "点击重启按钮",
+          "description": "点击红色关机按钮",
           "findBy": "cssSelector",
-          "selector": "button[class*='bg-info']",
+          "selector": "button[class*='outline-error']",
           "markEl": false,
           "multiple": false,
           "waitForSelector": true,
@@ -270,24 +287,48 @@
         "id": "n4click",
         "initialized": false,
         "label": "event-click",
-        "position": {
-          "x": 850,
-          "y": 300
-        },
+        "position": { "x": 850, "y": 300 },
         "type": "BlockBasic"
       },
       {
         "data": {
           "disableBlock": false,
-          "time": "10000"
+          "description": "等待60秒让服务器完全停止",
+          "time": "60000"
         },
         "id": "n5delay2",
         "initialized": false,
         "label": "delay",
-        "position": {
-          "x": 1100,
-          "y": 300
+        "position": { "x": 1100, "y": 300 },
+        "type": "BlockDelay"
+      },
+      {
+        "data": {
+          "disableBlock": false,
+          "description": "点击Start按钮启动服务器",
+          "findBy": "cssSelector",
+          "selector": "button[data-slot='base']",
+          "markEl": false,
+          "multiple": false,
+          "waitForSelector": true,
+          "waitSelectorTimeout": 10000
         },
+        "id": "n14clickstart",
+        "initialized": false,
+        "label": "event-click",
+        "position": { "x": 1350, "y": 300 },
+        "type": "BlockBasic"
+      },
+      {
+        "data": {
+          "disableBlock": false,
+          "description": "等待10秒让服务器启动",
+          "time": "10000"
+        },
+        "id": "n5bdelay3",
+        "initialized": false,
+        "label": "delay",
+        "position": { "x": 1600, "y": 300 },
         "type": "BlockDelay"
       },
       {
@@ -309,10 +350,7 @@
         "id": "n6gettext",
         "initialized": false,
         "label": "get-text",
-        "position": {
-          "x": 1350,
-          "y": 300
-        },
+        "position": { "x": 1850, "y": 300 },
         "type": "BlockBasic"
       },
       {
@@ -327,9 +365,7 @@
                       "items": [
                         {
                           "category": "value",
-                          "data": {
-                            "value": "{{variables.shutdownTime}}"
-                          },
+                          "data": { "value": "{{variables.shutdownTime}}" },
                           "id": "item1",
                           "type": "value"
                         },
@@ -340,9 +376,7 @@
                         },
                         {
                           "category": "value",
-                          "data": {
-                            "value": "3h 59m"
-                          },
+                          "data": { "value": "3h 59m" },
                           "id": "item3",
                           "type": "value"
                         }
@@ -365,10 +399,7 @@
         "id": "n7cond",
         "initialized": false,
         "label": "conditions",
-        "position": {
-          "x": 1600,
-          "y": 300
-        },
+        "position": { "x": 2100, "y": 300 },
         "type": "BlockConditions"
       },
       {
@@ -381,10 +412,7 @@
         "id": "n8success",
         "initialized": false,
         "label": "javascript-code",
-        "position": {
-          "x": 1850,
-          "y": 100
-        },
+        "position": { "x": 2350, "y": 100 },
         "type": "BlockBasic"
       },
       {
@@ -399,10 +427,7 @@
         "id": "n10close",
         "initialized": false,
         "label": "close-tab",
-        "position": {
-          "x": 2100,
-          "y": 100
-        },
+        "position": { "x": 2600, "y": 100 },
         "type": "BlockBasic"
       },
       {
@@ -417,9 +442,7 @@
                       "items": [
                         {
                           "category": "value",
-                          "data": {
-                            "value": "{{variables.retryCount}}"
-                          },
+                          "data": { "value": "{{variables.retryCount}}" },
                           "id": "item4",
                           "type": "value"
                         },
@@ -430,9 +453,7 @@
                         },
                         {
                           "category": "value",
-                          "data": {
-                            "value": "5"
-                          },
+                          "data": { "value": "5" },
                           "id": "item6",
                           "type": "value"
                         }
@@ -455,10 +476,7 @@
         "id": "n9retrycond",
         "initialized": false,
         "label": "conditions",
-        "position": {
-          "x": 1850,
-          "y": 450
-        },
+        "position": { "x": 2350, "y": 450 },
         "type": "BlockConditions"
       },
       {
@@ -471,10 +489,7 @@
         "id": "n11jsretry",
         "initialized": false,
         "label": "javascript-code",
-        "position": {
-          "x": 2100,
-          "y": 400
-        },
+        "position": { "x": 2600, "y": 400 },
         "type": "BlockBasic"
       },
       {
@@ -485,10 +500,7 @@
         "id": "n13delay3",
         "initialized": false,
         "label": "delay",
-        "position": {
-          "x": 2350,
-          "y": 400
-        },
+        "position": { "x": 2850, "y": 400 },
         "type": "BlockDelay"
       },
       {
@@ -501,22 +513,12 @@
         "id": "n12fail",
         "initialized": false,
         "label": "javascript-code",
-        "position": {
-          "x": 2100,
-          "y": 600
-        },
+        "position": { "x": 2600, "y": 600 },
         "type": "BlockBasic"
       }
     ],
-    "position": [
-      0,
-      0
-    ],
-    "viewport": {
-      "x": 0,
-      "y": 0,
-      "zoom": 0.8
-    },
+    "position": [0, 0],
+    "viewport": { "x": 0, "y": 0, "zoom": 0.8 },
     "zoom": 0.8
   },
   "settings": {
@@ -535,6 +537,6 @@
     "saveLog": true
   },
   "globalData": "{\n\t\"key\": \"value\"\n}",
-  "description": "点击重启按钮，每10秒检查倒计时是否重置到3h 59m，最多等待60秒。每3小时自动执行。",
+  "description": "点击红色关机按钮，等待60秒后点击Start启动，再检查倒计时是否重置到3h 59m。每3小时自动执行。",
   "includedWorkflows": {}
 }
