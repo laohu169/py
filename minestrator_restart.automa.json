@@ -307,7 +307,7 @@
           "disableBlock": false,
           "description": "点击Start按钮启动服务器",
           "findBy": "cssSelector",
-          "selector": "button[data-slot='base']",
+          "selector": "button[class*='outline-primary']",
           "markEl": false,
           "multiple": false,
           "waitForSelector": true,
